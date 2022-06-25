@@ -1,0 +1,42 @@
+<div class="position-relative ">
+  <h1 class="position-relative text-center">POKE CONSULT</h1>
+  <hr>
+</div>
+<br>
+<div class="container">
+  <input type="text" #miInput class="form-control mb-2" placeholder="Buscar pokemon" (keyup)="saveSearch(miInput.value)" >
+  <button class="btn btn-primary m-1" (click)="btnPrevious()" [disabled]="page===0">previus</button>
+  <button class="btn btn-primary m-1" (click)="btnNext()" [disabled]="(listaPokemons | filtro:page:search).length !=5">nextius</button>
+</div>
+<table class="table table-dark text-primary container">
+  <thead>
+    <tr >
+      <th class="text-center">
+        id
+      </th>
+      <th class="text-center ">
+        name
+      </th>
+      <th class="text-center">
+        picture
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of listaPokemons | filtro:page:search" class="container-md">
+      <td class ='text-center '>
+        {{pokemon.id}}
+      </td >
+      <td class ='text-center '>
+        {{pokemon.name}}
+      </td>
+      <td class ='text-center '>
+        <img class='imgPoke' [src]="pokemon.imagen" [alt]="pokemon.name">
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
